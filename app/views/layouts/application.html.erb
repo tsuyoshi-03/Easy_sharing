@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test1</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+    
+    <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
+
+  
+  </head>
+
+  <body>
+  <% if logged_in? %>  
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <%= link_to current_user.name, '/pages/top', class: "navbar-brand" %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <%= link_to '案件登録', new_topic_path , class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to '案件一覧', '/topics', class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to '検索', '/pages/search', class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to 'ユーザー管理', '/users', class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">リンク集</a>
+            </li>
+          </ul> <a class="nav-item active active ml-auto">
+            <%= link_to logout_path, class: "btn btn-danger", method: :delete do %>ログアウト<% end %>
+                </a>
+        </div>
+    </nav>
+  <% end %>  
+   
+  <%= yield %>
+  
+  </body>
+</html>
