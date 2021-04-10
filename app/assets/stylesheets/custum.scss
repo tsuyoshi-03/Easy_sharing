@@ -32,3 +32,9 @@
     }
   }
 }
+
+.card-text {
+  height: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

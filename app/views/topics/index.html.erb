@@ -1,21 +1,72 @@
-<div class="topic-index-wrapper">
-  <div class="container">
-    <% @topics.each do |topic| %>
+<body >
+  <div class="collapse bg-dark" id="navbarHeader">
+    <div class="container">
       <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <div class="topic-index-single">
-            <h2 class="topic-author">
-              <%= link_to topic.user.name, topic %>
-            </h2>
-            <%= image_tag topic.image.url  unless topic.image.blank?  %>
-            <%= image_tag 'heart-black.png', class: 'topic-index-icon' %>
-            <%= image_tag 'comment.png', class: 'topic-index-icon' %>
-            <p class="topic-text">
-              <%= topic.description %>
-            </p>
-          </div>
+        <div class="col-md-7 py-4">
+          <h4>案件一覧</h4>
+          <p class="text-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div class="col-md-3 offset-md-1 py-4">
+          <h4>Contact</h4>
+          <ul class="list-unstyled">
+            <li>
+              <a href="#" class="text-secondary">Follow on Twitter</a>
+            </li>
+            <li>
+              <a href="#" class="text-secondary">Like on Facebook</a>
+            </li>
+            <li>
+              <a href="#" class="text-secondary">Email me</a>
+            </li>
+          </ul>
         </div>
       </div>
-    <% end %>
+    </div>
   </div>
-</div>
+    
+  <div class="text-center py-5">
+    <div class="container">
+      <div class="row my-5 justify-content-center">
+        <div class="col-md-9">
+          <h1>案件一覧</h1>
+          <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+          <a href="#" class="btn btn-primary m-2">Main call to action</a>
+          <a href="#" class="btn btn-secondary m-2">Secondary action</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="py-4 bg-light">
+    <div class="container">
+      <div class="row flex-row">
+        <% @topics.each do |topic| %>
+        <div class="col-md-4 p-3">
+          <div class="card box-shadow">
+            <img class="card-img-top"><%= image_tag topic.image.url  unless topic.image.blank? %>
+            <div class="card-body">
+              <p class="font-weight-bold"><%= topic.user.name %></p>
+              <p class="card-text"><%= topic.description %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to "View", topic %></button>
+                </div> <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+     <% end %>
+     </div>
+    </div>
+  </div>
+  
+  <footer class="text-muted py-5">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Back to top</a>
+      </p>
+      <p>Album template is based on Bootstrap © examples.&nbsp; <br>New to Bootstrap? <a href="#">Visit the homepage</a> or read our <a href="#">getting started guide</a>.</p>
+    </div>
+  </footer>
+ 
+</body>

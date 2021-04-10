@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'pages/index'
   get 'pages/top'
   get 'pages/search'
+  get 'pages/store'
   
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
