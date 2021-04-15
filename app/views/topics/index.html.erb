@@ -1,38 +1,21 @@
 <body >
-  <div class="collapse bg-dark" id="navbarHeader">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-7 py-4">
-          <h4>案件一覧</h4>
-          <p class="text-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-        <div class="col-md-3 offset-md-1 py-4">
-          <h4>Contact</h4>
-          <ul class="list-unstyled">
-            <li>
-              <a href="#" class="text-secondary">Follow on Twitter</a>
-            </li>
-            <li>
-              <a href="#" class="text-secondary">Like on Facebook</a>
-            </li>
-            <li>
-              <a href="#" class="text-secondary">Email me</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-    
   <div class="text-center py-5">
     <div class="container">
       <div class="row my-5 justify-content-center">
         <div class="col-md-9">
           <h1>案件一覧</h1>
-          <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
-          <a href="#" class="btn btn-primary m-2">Main call to action</a>
-          <a href="#" class="btn btn-secondary m-2">Secondary action</a>
+            <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+            <a href="#" class="btn btn-primary m-2">マイポスト</a>
+            <%= link_to("ブックマーク", favorites_index_path, {class: "btn btn-secondary m-2"}) %>
         </div>
+      <div class="col-md-1２ ml-auto" style="">
+        <form class="form-inline" style="">
+          <div class="input-group">
+            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="絞り込み検索">
+            <div class="input-group-append"><button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button></div>
+          </div>
+        </form>
+      </div>
       </div>
     </div>
   </div>

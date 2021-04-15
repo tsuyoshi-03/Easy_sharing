@@ -1,19 +1,16 @@
-<% @users.each do |user| %>
- <%= link_to user.name, user %>
-<% end %>
-
 <div class="py-5">
     <div class="container">
       <div class="row">
+        <% @users.each do |user| %>
         <div class="col-md-12">
           <div class="list-group" >
-            <a href="#" class="list-group-item list-group-item-action active"> Cras justo odio </a>
-            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-            <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+            <li class="list-group-item d-flex justify-content-between align-items-center"><%= link_to user.name, user %>
+              <%= link_to '編集', edit_user_path(id: user.id) , class: "btn btn-primary ml-auto" %>
+              <span class="btn btn-danger">削除</span>
+            </li>
           </div>
         </div>
+        <% end %>
       </div>
     </div>
   </div>
