@@ -26,7 +26,14 @@
         <% @topics.each do |topic| %>
         <div class="col-md-4 p-3">
           <div class="card box-shadow">
-            <img class="card-img-top"><%= image_tag topic.image.url  unless topic.image.blank? %>
+            <img class="card-img-top">
+            
+            <% if topic.image.url %>
+              <%= image_tag topic.image.url %>
+            <% else %>
+              <%= image_tag "/assets/default.png" %>
+            <% end %>
+              
             <div class="card-body">
               <p class="font-weight-bold"><%= topic.user.name %></p>
               <p class="card-text"><%= topic.description %></p>

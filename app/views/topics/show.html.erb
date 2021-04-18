@@ -1,7 +1,7 @@
 <div class="topic-index-wrapper">
   <div class="container">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-12 col-md-offset-3">
           <div class="topic-index-single">
             <h2 class="topic-author">
               <%= @topic.user.name %>
@@ -11,15 +11,18 @@
               <%= image_tag @topic.image.url %>
               <% end %>
             <% end %>  
-              
-            <%= link_to favorites_path(topic_id: @topic.id), method: :post do %>
-              <%= image_tag 'heart-black.png', class: 'topic-index-icon' %>
-            <% end %>
-            <%= link_to image_tag('comment.png', class: 'topic-index-icon'), new_comment_path(topic_id: @topic.id) %> 
-            
+ 
             <p class="topic-text">
               <%= @topic.description %>
             </p>
+            <% if Favorite.find_by(user_id: @current_user.id, topic_id: @topic.id) %>
+              <%= link_to("/favorites/#{@topic.id}/destroy", {method: "post"}) do %>
+                <span class="fa fa-heart like-btn"></span><% end %>
+            <% else %>
+              <%= link_to favorites_path(topic_id: @topic.id), method: :post do %>
+                <%= image_tag 'heart-black.png', class: 'topic-index-icon' %><% end %>
+            <% end %>  
+            <%= link_to image_tag('comment.png', class: 'topic-index-icon'), new_comment_path(topic_id: @topic.id) %>
           </div>
         </div>
       </div>
@@ -30,7 +33,10 @@
         
         <h2>コメント</h2>
         <% @comments.each do |c| %>
-          <div><%= c.comment_content %></div>
+          <div class="topic-index-single">
+            <h2 class="topic-author"><%= @comment.user.name %></h2>  
+            <%= c.comment_content %>
+          </div>
         <% end %>
 
     </div>

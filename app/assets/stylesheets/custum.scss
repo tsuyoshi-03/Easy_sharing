@@ -44,5 +44,21 @@
 }  
 
 img {
-   height: 300px;
-}   
+   height: 350px;
+} 
+
+.like-btn {
+ width: 25px;
+ height: 30px;
+ font-size: 25px;
+ color: red; 
+ margin-left: 20px;
+ }
+ 
+ .unlike-btn {
+ width: 25px;
+ height: 30px;
+ font-size: 25px;
+ color: #e54747;
+ margin-left: 20px;
+ }
