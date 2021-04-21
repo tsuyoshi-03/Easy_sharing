@@ -1,0 +1,16 @@
+<div class="py-5">
+    <div class="container">
+      <div class="row">
+        <% @shops.each do |shop| %>
+        <div class="col-md-12">
+          <div class="list-group" >
+            <li class="list-group-item d-flex justify-content-between align-items-center"><%= link_to shop.name, shop %>
+              <%= link_to '編集', edit_shop_path(id: shop.id) , class: "btn btn-primary ml-auto" %>
+              <span class="btn btn-danger">削除</span>
+            </li>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>

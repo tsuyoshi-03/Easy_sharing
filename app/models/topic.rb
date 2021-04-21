@@ -3,7 +3,8 @@ class Topic < ApplicationRecord
   validates :description, presence: true
   
   belongs_to :user
+  belongs_to :shop
   has_many :favorites
-  has_many :comments
+  has_many :comments, dependent: :destroy
   mount_uploader :image, ImageUploader
 end

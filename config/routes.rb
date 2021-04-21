@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'maps/index'
   root "pages#index"
   get 'sessions/new'
   
@@ -6,7 +7,6 @@ Rails.application.routes.draw do
   get 'pages/index'
   get 'pages/top'
   get 'pages/search'
-  get 'pages/store'
   
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   resources :users
   resources :topics
   resources :comments
+  resources :shops
+  resources :maps, only: [:index]
   
   get 'favorites/index'
   post '/favorites', to: 'favorites#create'

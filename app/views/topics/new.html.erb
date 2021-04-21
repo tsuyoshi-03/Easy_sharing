@@ -3,14 +3,11 @@
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <h1 class="text-center">新規投稿</h1>
-          <label for="country">店名</label> 
-          <select class="custom-select d-block w-100" id="country" required="" >
-            <option value="">下記から選択</option>
-            <option value="United States">United States</option>
-            <option value="United States">United States</option>
-          </select>
+          
 
           <%= form_for @topic do |f| %>
+          <%= f.label :店名 %> 
+          <%= f.collection_select :shop_id, Shop.all, :id, :name, :prompt => "店名を選択" %>
         
           <div class="form-group">
             <%= f.label :商談内容・受注状況等 %>
