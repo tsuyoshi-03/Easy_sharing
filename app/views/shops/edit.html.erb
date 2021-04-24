@@ -1,6 +1,6 @@
 <div class="container" >
   <div class="mx-auto" style="width: 200px;">
-    <p>書店登録</p>
+    <p>登録情報</p>
   </div>
     <%= form_for @shop do |f| %>
       <div class="form-group">
@@ -14,6 +14,10 @@
       <div class="form-group">
         <%= f.label :住所, class: 'text-body' %>
         <%= f.text_field :address, class: 'form-control' %>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="customCheck1">
+        <label class="custom-control-label" for="customCheck1">閉店</label>
       </div>
       <div class="mx-auto" style="width: 200px;">
         <%= f.submit "登録", class: "btn btn-primary" %>

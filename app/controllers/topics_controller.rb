@@ -44,6 +44,10 @@ class TopicsController < ApplicationController
     end
   end
 
+  def mypost
+    @topics = Topic.all.order(created_at: :desc)
+  end  
+
   private
   def topic_params
     params.require(:topic).permit(:image, :description, :shop_id)

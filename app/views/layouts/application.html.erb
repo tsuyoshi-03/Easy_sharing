@@ -20,7 +20,7 @@
   </head>
 
   <body>
-  <% if logged_in? %>  
+  <% if logged_in? %> 
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <%= link_to current_user.name, '/pages/top', class: "navbar-brand" %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,10 +29,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <%= link_to '案件登録', new_topic_path , class: "nav-link" %>
+              <%= link_to '新規投稿', new_topic_path , class: "nav-link" %>
             </li>
             <li class="nav-item active">
-              <%= link_to '案件一覧', '/topics', class: "nav-link" %>
+              <%= link_to '投稿一覧', '/topics', class: "nav-link" %>
             </li>
             <li class="nav-item active">
               <%= link_to 'MAP', '/maps' , class: "nav-link" %>
@@ -51,9 +51,9 @@
                 </a>
         </div>
     </nav>
-  <% end %>  
-   
-  <%= yield %>
   
+<% end %>
+
+ <%= yield %>
   </body>
 </html>
