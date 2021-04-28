@@ -21,7 +21,7 @@
     img {
       margin-top: 10px;
       margin-bottom: 20px;
-      width: 100%;
+      //width: 100%;
     }
 
     .topic-index-icon {
@@ -46,8 +46,8 @@
   height: 0px;
 }  
 
-img {
-   height: 300px;
+.index_image {
+   height: 270px;
 } 
 
 .like-btn {
@@ -64,4 +64,40 @@ img {
  font-size: 25px;
  color: #e54747;
  margin-left: 20px;
+ }
+ 
+ .icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 30%;
+  //box-shadow: 0 2px 6px #c1ced7;
+  //margin: 20px 0 10px;
+  object-fit: cover;
+ }
+ 
+ .icon_edit {
+  width: 100px;
+  height: 100px;
+  border-radius: 30%;
+  box-shadow: 0 2px 6px #c1ced7;
+  margin: 20px 0 10px;
+  object-fit: cover;
+ }
+ 
+ .icon_show {
+  width: 40px;
+  height: 40px;
+  border-radius: 30%;
+  //box-shadow: 0 2px 6px #c1ced7;
+  margin: 20px 0 10px;
+  object-fit: cover;
+ }
+ 
+ .topic_image{
+  width: 400px;
+  height: 400px;
+ }
+ 
+ .default_cover {
+     width: 1110px;
  }

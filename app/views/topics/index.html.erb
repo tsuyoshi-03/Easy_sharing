@@ -18,15 +18,19 @@
         <div class="col-md-4 p-3">
           <div class="card box-shadow">
             <img class="card-img-top">
-            
             <% if topic.image.url %>
-              <%= image_tag topic.image.url %>
+              <%= image_tag topic.image.url, class:'index_image' %>
             <% else %>
-              <%= image_tag "/assets/default.png" %>
+              <%= image_tag "/assets/default.png", class:'index_image' %>
             <% end %>
-              
             <div class="card-body">
-              <p class="font-weight-bold"><%= topic.user.name %></p>
+              <p class="font-weight-bold">
+                <% if topic.user.image.url %>
+                  <%= image_tag topic.user.image.url, class:'icon' %>
+                <% else %>
+                  <%= image_tag "/assets/default_user_image.png", class:'icon' %>
+                <% end %>
+                <%= topic.user.name %></p>
               <p class="font-weight-bold"><%= topic.shop.name %></p>
               <p class="card-text"><%= topic.description %></p>
             <div class="d-flex justify-content-between align-items-center">

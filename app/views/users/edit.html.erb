@@ -19,6 +19,16 @@
       <%= f.label :password_confirmation, class: 'text-body' %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
     </div>
+    <% if @user.image.url %>
+      <%= image_tag @user.image.url, class:'icon_edit' %>
+    <% else %>
+      <%= image_tag "/assets/default_user_image.png", class:'icon_edit' %>
+    <% end %>
+    
+    <div class="form-group">
+      <%= f.label :image %>
+      <%= f.file_field :image%>
+    </div>
     <div class="mx-auto" style="width: 200px;">
       <%= f.submit "登録", class: "btn btn-primary" %>
     </div>  

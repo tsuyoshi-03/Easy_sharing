@@ -1,7 +1,7 @@
 <h2>gmap</h2>
 
 <!-- 地名入力用のinputを追加 -->
-<input id="address" type="textbox" value="エリアを検索">
+<input id="address" type="textbox" value="">
 
 <!-- buttonをクリックしたらcodeAddressを実行　-->
 <input type="button" value="Encode" onclick="codeAddress()">
@@ -28,9 +28,31 @@ function initMap(){
   geocoder = new google.maps.Geocoder()
 
   map = new google.maps.Map(document.getElementById('map'), {
-  center: {lat: 35.67380960699613, lng: 139.7739377609062},
+  center: {lat: 35.658164639420335, lng: 139.701625068572},
   zoom: 15
   });
+  
+  <% @shops.each do |shop| %>
+          (function(){
+          var contentString = "住所：<%= shop.address %>"; 
+
+          var marker = new google.maps.Marker({
+              position:{lat: <%= shop.latitude %>, lng: <%= shop.longitude %>},
+              map: map,
+              title: contentString
+          });
+          
+          var infowindow = new google.maps.InfoWindow({
+                position: marker,
+                content: "<%= shop.name %>"
+              })
+              
+          marker.addListener('click', function() {
+                infowindow.open(map, marker);
+              });    
+
+          })();
+      <% end %>
 }
 
 function codeAddress(){
@@ -55,4 +77,4 @@ function codeAddress(){
 }
 
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx5QQgEIXltFBJRTVy4TzGHb7ZG0H9n7Q&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async defer></script>
