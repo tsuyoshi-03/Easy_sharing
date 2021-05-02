@@ -99,5 +99,14 @@
  }
  
  .default_cover {
-     width: 1110px;
+  width: 1110px;
+ }
+ 
+ .navbar-brand {
+  width: 40px;
+  height: 40px;
+  border-radius: 30%;
+  //box-shadow: 0 2px 6px #c1ced7;
+  //margin: 10px 0 10px;
+  object-fit: cover;
  }
