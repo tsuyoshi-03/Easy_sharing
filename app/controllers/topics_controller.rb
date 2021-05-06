@@ -1,6 +1,12 @@
 class TopicsController < ApplicationController
   def index
-    @topics = Topic.all.order(created_at: :desc)
+    @q = Topic.ransack(params[:q])
+    @topics = @q.result(distinct: true).order(created_at: :desc)
+  end
+  
+  def search
+    @q = Topic.search(search_params)
+    @topics = @q.result(distinct: true).order(created_at: :desc)
   end
   
   def new
@@ -45,12 +51,17 @@ class TopicsController < ApplicationController
   end
 
   def mypost
-    @topics = Topic.all.order(created_at: :desc)
-  end  
+    @q = current_user.topics.ransack(params[:q])
+    @topics = @q.result(distinct: true).order(created_at: :desc)
+  end
 
   private
   def topic_params
     params.require(:topic).permit(:image, :description, :shop_id)
+  end
+  
+  def search_params
+    params.require(:q).permit(:shop_name_cont)
   end
   
 end
