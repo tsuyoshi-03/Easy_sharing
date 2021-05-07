@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   
   resources :users
   resources :topics do
-    get '/autocomplete_shop_name/:shop_name', on: :collection, action: :autocomplete_shop_name
+    get '/autocomplete_topic_shop_name/:topic_shop_name', on: :collection, action: :autocomplete_topic_shop_name
   end
   resources :comments
   resources :shops

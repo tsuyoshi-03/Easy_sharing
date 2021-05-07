@@ -32,7 +32,7 @@
 <script>
   const dataList = function(request, response) {
     $.ajax({
-        url: '/shops/autocomplete_shop_name/' + request.term,
+        url: '/shops/autocomplete_topic_shop_name/' + request.term,
         dataType: 'json',
         type: 'GET',
         cache: true,
@@ -44,4 +44,12 @@
       }
     });
   }
+  
+  $('#topic_shop_name').autocomplete({
+      source: dataList,
+      autoFocus: true, // 自動的に先頭の項目にフォーカスするか
+      delay: 300, // 入力してからサジェストが動くまでの時間(ms)
+      minLength: 2 // 2文字入力しないとサジェストが動かない
+    })
+  });
 </script>

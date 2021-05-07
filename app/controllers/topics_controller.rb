@@ -55,9 +55,9 @@ class TopicsController < ApplicationController
     @topics = @q.result(distinct: true).order(created_at: :desc)
   end
   
-   def autocomplete_shop_name
+   def autocomplete_topic_shop_name
     # params[:company]の値でUser.companyを前方一致検索、company列だけ取り出し、nilと空文字を取り除いた配列
-    shops = Topic.by_shop_name_like(autocomplete_params[:shop_name]).pluck(:shop_name).reject(&:blank?)
+    shops = Topic.by_topic_shop_name_like(autocomplete_params[:topic_shop_name]).pluck(:topic_shop_name).reject(&:blank?)
     render json: shops
     # レスポンスの例: ["てすと１会社","てすと２会社","てすと３会社"]
    end
@@ -72,7 +72,7 @@ class TopicsController < ApplicationController
   end
   
   def autocomplete_params
-      params.permit(:shop_name)
+      params.permit(:topic_shop_name)
   end
   
 end
