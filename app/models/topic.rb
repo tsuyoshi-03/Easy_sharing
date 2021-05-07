@@ -7,4 +7,8 @@ class Topic < ApplicationRecord
   has_many :favorites
   has_many :comments, dependent: :destroy
   mount_uploader :image, ImageUploader
+  
+  scope :by_shop_name_like, lambda { |shop_name|
+    where('shop_name LIKE :value', { value: "#{sanitize_sql_like(shop_name)}%"})
+  }
 end

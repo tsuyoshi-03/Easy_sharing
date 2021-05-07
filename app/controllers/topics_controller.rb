@@ -54,6 +54,13 @@ class TopicsController < ApplicationController
     @q = current_user.topics.ransack(params[:q])
     @topics = @q.result(distinct: true).order(created_at: :desc)
   end
+  
+   def autocomplete_shop_name
+    # params[:company]の値でUser.companyを前方一致検索、company列だけ取り出し、nilと空文字を取り除いた配列
+    shops = Topic.by_shop_name_like(autocomplete_params[:shop_name]).pluck(:shop_name).reject(&:blank?)
+    render json: shops
+    # レスポンスの例: ["てすと１会社","てすと２会社","てすと３会社"]
+   end
 
   private
   def topic_params
@@ -62,6 +69,10 @@ class TopicsController < ApplicationController
   
   def search_params
     params.require(:q).permit(:shop_name_cont)
+  end
+  
+  def autocomplete_params
+      params.permit(:shop_name)
   end
   
 end

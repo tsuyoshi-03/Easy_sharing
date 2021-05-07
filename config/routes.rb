@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   get 'search', to: 'topics#search'
   
   resources :users
-  resources :topics
+  resources :topics do
+    get '/autocomplete_shop_name/:shop_name', on: :collection, action: :autocomplete_shop_name
+  end
   resources :comments
   resources :shops
   resources :maps, only: [:index]

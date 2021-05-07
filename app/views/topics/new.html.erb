@@ -4,9 +4,11 @@
       <div class="col-md-6 col-md-offset-3">
         <h1 class="text-center">新規投稿</h1>
           
-          <%= form_for @topic do |f| %>
-            <%= f.label :店名 %> 
-            <%= f.collection_select :shop_id, Shop.all, :id, :name, :prompt => "店名を選択" %>
+          <%= form_with(model: @topic, local: true) do |f| %>
+          <div class="form-group">
+            <%= f.label :店名 %>
+            <%= f.text_field :shop_name, class: 'form-control', size: 25 %>
+          </div>
         
           <div class="form-group">
             <%= f.label :商談内容・受注状況等 %>
@@ -25,3 +27,21 @@
     </div>
   </div>
 </div>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  const dataList = function(request, response) {
+    $.ajax({
+        url: '/shops/autocomplete_shop_name/' + request.term,
+        dataType: 'json',
+        type: 'GET',
+        cache: true,
+        success: function(data) {
+          response(data);
+        },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        response(['']);
+      }
+    });
+  }
+</script>
