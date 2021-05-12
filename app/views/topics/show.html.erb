@@ -14,18 +14,47 @@
             <h3 class="topic-author">
               <%= @topic.shop.name %>
             </h3>
-            <% if @topic.image.url %>
-              <%=  link_to @topic.image.url, 'data-lightbox': @topic.image do %>
-              <%= image_tag @topic.image.url, class:'topic_image' %>
+            
+            <div class="topic-author">
+            <% if @topic.image1.url %>
+              <%=  link_to @topic.image1.url, 'data-lightbox': @topic.image1 do %>
+              <%= image_tag @topic.image1.url, class:'topic_image1' %>
               <% end %>
             <% else %>
               <%= image_tag "/assets/default_cover.png", class:'default_cover' %>
-            <% end %>  
-            <p class="topic-text">
-              <%= simple_format(@topic.description) %>
-            </p>
+            <% end %>
             
-            <% if Favorite.find_by(user_id: @current_user.id, topic_id: @topic.id) %>
+            <% if @topic.image2.url %>
+              <%=  link_to @topic.image2.url, 'data-lightbox': @topic.image2 do %>
+              <%= image_tag @topic.image2.url, class:'topic_image2' %>
+              <% end %>
+            <% else %>
+              <%= image_tag "/assets/default_cover.png", class:'default_cover' %>
+            <% end %>
+            
+            <% if @topic.image3.url %>
+              <%=  link_to @topic.image3.url, 'data-lightbox': @topic.image3 do %>
+              <%= image_tag @topic.image3.url, class:'topic_image4' %>
+              <% end %>
+            <% else %>
+              <%= image_tag "/assets/default_cover.png", class:'default_cover' %>
+            <% end %>
+            
+            <% if @topic.image4.url %>
+              <%=  link_to @topic.image4.url, 'data-lightbox': @topic.image4 do %>
+              <%= image_tag @topic.image4.url, class:'topic_image4' %>
+              <% end %>
+            <% else %>
+              <%= image_tag "/assets/default_cover.png", class:'default_cover' %>
+            <% end %>
+            </div>
+            
+            <div class="topic-text">
+              <%= simple_format(@topic.description) %>
+            </div>
+            
+            <div class="topic-author">
+             <% if Favorite.find_by(user_id: @current_user.id, topic_id: @topic.id) %>
               <%= link_to("/favorites/#{@topic.id}/destroy", {method: "post"}) do %>
                 <span class="fa fa-heart like-btn"></span>
               <% end %>
@@ -34,13 +63,15 @@
               <%= image_tag 'heart-black.png', class: 'topic-index-icon' %><% end %>
             <% end %>  
             <%= link_to image_tag('comment.png', class: 'topic-index-icon'), new_comment_path(topic_id: @topic.id) %>
+            
+            <% if current_user == @topic.user %>
+              <%= link_to image_tag('edit.png', class: 'topic-index-icon'), edit_topic_path %>
+              <%= link_to image_tag('delete.png', class: 'topic-index-icon'), topic_path,method: :delete %>
+            <% end %>
+          </div>
           </div>
         </div>
       </div>
-        <% if current_user == @topic.user %>
-          <%= link_to "編集", edit_topic_path %>
-          <%= link_to "削除", topic_path,method: :delete %>
-        <% end %>
         
         <h2>コメント</h2>
         <% @comments.each do |c| %>
@@ -52,4 +83,3 @@
 
     </div>
   </div>
-  

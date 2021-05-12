@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_27_063332) do
+ActiveRecord::Schema.define(version: 2021_05_12_055325) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "comment_content"
@@ -42,10 +42,13 @@ ActiveRecord::Schema.define(version: 2021_04_27_063332) do
   create_table "topics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.string "description"
-    t.string "image"
+    t.string "image1"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "shop_id"
+    t.string "image2"
+    t.string "image3"
+    t.string "image4"
     t.index ["shop_id"], name: "index_topics_on_shop_id"
   end
 

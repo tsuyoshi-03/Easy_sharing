@@ -1,26 +1,61 @@
-<div class="topic-new-wrapper" >
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h1 class="text-center">編集</h1>
-        <%= form_for @topic do |f| %>
-        <%= f.label :店名 %> 
-        <%= f.collection_select :shop_id, Shop.all, :id, :name, :prompt => "店名を選択" %>
-        
+<div class="container" >
+  <div class="row">
+    <div class="mx-auto col-md-10 col-10 bg-white p-5" >
+      <h1 class="text-center">編集</h1>
+        <%= form_with(model: @topic, local: true) do |f| %>
           <div class="form-group">
-            <%= f.label :image %>
-            <%= f.file_field :image%>
+            <%= f.label :店名 %>
+            <%= f.text_field :shop_name, class: 'form-control' %>
           </div>
-
           <div class="form-group">
-            <%= f.label :description %>
-            <%= f.text_area :description, class: 'form-control' %>
+            <%= f.label :商談内容・受注状況等 %>
+            <%= f.text_area :description, size: '20x12', class: 'form-control' %>
           </div>
-
-          <%= f.submit '確定', class: 'btn btn-black btn-block' %>
-
+          <div class="form-group">
+            <%= f.label :image1 %>
+            <%= f.file_field :image1 %>
+          </div>
+          <div class="form-group">
+            <%= f.label :image2 %>
+            <%= f.file_field :image2 %>
+          </div>
+          <div class="form-group">
+            <%= f.label :image3 %>
+            <%= f.file_field :image3 %>
+          </div>
+          <div class="form-group">
+            <%= f.label :image4 %>
+            <%= f.file_field :image4 %>
+          </div>
+          <div class="mx-auto" style="width: 150px;">
+            <%= f.submit '投稿', class: 'btn-block btn-primary' %>
+          </div>  
         <% end %>
       </div>
     </div>
   </div>
-</div>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  const dataList = function(request, response) {
+    $.ajax({
+        url: '/shops/autocomplete_shop_name/' + request.term,
+        dataType: 'json',
+        type: 'GET',
+        cache: true,
+        success: function(data) {
+          response(data);
+        },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        response(['']);
+      }
+    });
+  }
+  
+  $('#topic_shop_name').autocomplete({
+      source: dataList,
+      autoFocus: true, // 自動的に先頭の項目にフォーカスするか
+      delay: 300, // 入力してからサジェストが動くまでの時間(ms)
+      minLength: 2 // 2文字入力しないとサジェストが動かない
+  });
+</script>

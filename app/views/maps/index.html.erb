@@ -28,7 +28,7 @@ function initMap(){
   geocoder = new google.maps.Geocoder()
 
   map = new google.maps.Map(document.getElementById('map'), {
-  center: {lat: 35.658164639420335, lng: 139.701625068572},
+  center: {lat: 35.658164639420338, lng: 139.701625068579},
   zoom: 15
   });
   
@@ -66,10 +66,10 @@ function codeAddress(){
       map.setCenter(results[0].geometry.location);
 
 　　　　　　　　　　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
-      var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-      });
+      //var marker = new google.maps.Marker({
+          //map: map,
+          //position: results[0].geometry.location
+      //});
     } else {
       alert('該当する結果がありませんでした:' + status);
     }
@@ -77,4 +77,4 @@ function codeAddress(){
 }
 
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9G1-Mx1yKDMSQIAy95Am4RGF63Dwkh6k&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async defer></script>

@@ -14,7 +14,14 @@ class TopicsController < ApplicationController
   end
   
   def create
-    @topic = current_user.topics.new(topic_params)
+    shop = Shop.find_by(name: topic_params[:shop_name] )
+    @topic = current_user.topics.new
+    @topic.image1 = topic_params[:image1]
+    @topic.image2 = topic_params[:image2]
+    @topic.image3 = topic_params[:image3]
+    @topic.image4 = topic_params[:image4]
+    @topic.description = topic_params[:description]
+    @topic.shop_id = shop.id
     if @topic.save
       redirect_to topics_path, success: '投稿に成功しました'
     else
@@ -54,25 +61,14 @@ class TopicsController < ApplicationController
     @q = current_user.topics.ransack(params[:q])
     @topics = @q.result(distinct: true).order(created_at: :desc)
   end
-  
-   def autocomplete_topic_shop_name
-    # params[:company]の値でUser.companyを前方一致検索、company列だけ取り出し、nilと空文字を取り除いた配列
-    shops = Topic.by_topic_shop_name_like(autocomplete_params[:topic_shop_name]).pluck(:topic_shop_name).reject(&:blank?)
-    render json: shops
-    # レスポンスの例: ["てすと１会社","てすと２会社","てすと３会社"]
-   end
 
   private
   def topic_params
-    params.require(:topic).permit(:image, :description, :shop_id)
+    params.require(:topic).permit(:image1, :image2, :image3, :image4, :description, :shop_name)
   end
   
   def search_params
     params.require(:q).permit(:shop_name_cont)
-  end
-  
-  def autocomplete_params
-      params.permit(:topic_shop_name)
   end
   
 end

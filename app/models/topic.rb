@@ -6,9 +6,9 @@ class Topic < ApplicationRecord
   belongs_to :shop
   has_many :favorites
   has_many :comments, dependent: :destroy
-  mount_uploader :image, ImageUploader
   
-  scope :by_topic_shop_name_like, lambda { |topic_shop_name|
-    where('topic_shop_name LIKE :value', { value: "#{sanitize_sql_like(topic_shop_name)}%"})
-  }
+  mount_uploader :image1, ImageUploader
+  mount_uploader :image2, ImageUploader
+  mount_uploader :image3, ImageUploader
+  mount_uploader :image4, ImageUploader
 end

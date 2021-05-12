@@ -93,13 +93,29 @@
   object-fit: cover;
  }
  
- .topic_image{
-  width: 400px;
-  height: 400px;
+ .topic_image1{
+  width: 263px;
+  height: 250px;
+ }
+ 
+ .topic_image2{
+  width: 263px;
+  height: 250px;
+ }
+ 
+ .topic_image3{
+  width: 263px;
+  height: 250px;
+ }
+ 
+ .topic_image4{
+  width: 263px;
+  height: 250px;
  }
  
  .default_cover {
-  width: 1110px;
+  width: 263px;
+  height: 250px;
  }
  
  .navbar-brand {
@@ -110,4 +126,18 @@
   //margin: 10px 0 10px;
   object-fit: cover;
  }
+ 
+ .btn-primary {
+  color: #fff;
+  border: 1px solid #fff;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 20px;
+  background-color: rgba(0,0,0,0.0);
+  border-radius: 0.25rem;
+
+  &:hover {
+    color: #fff;
+  }
+}
  
