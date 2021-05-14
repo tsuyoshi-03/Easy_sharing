@@ -1,6 +1,7 @@
 .topic-index-wrapper {
-  padding-top: 70px;
-  background-color: #fafafa;
+  padding-top: 40px;
+  padding-bottom: 150px;
+  background-color: #f3f3f3;
   .topic-index-single {
     background-color: #fff;
     padding-top: 20px;
@@ -30,6 +31,24 @@
       margin-left: 20px;
     }
   }
+}
+
+.user-new-wrapper {
+  padding-top: 40px;
+  padding-bottom: 90px;
+  background-color: #f3f3f3;
+} 
+
+.user-login-wrapper {
+  padding-top: 40px;
+  padding-bottom: 250px;
+  background-color: #f3f3f3;
+} 
+
+.topic-index-wrapper {
+ padding-top: 40px;
+  padding-bottom: 200px;
+  background-color: #f3f3f3;
 }
 
 .card-body{
@@ -118,13 +137,24 @@
   height: 250px;
  }
  
+ //ヘッダーアイコン
  .navbar-brand {
   width: 40px;
   height: 40px;
-  border-radius: 30%;
+  //border-radius: 30%;
   //box-shadow: 0 2px 6px #c1ced7;
   //margin: 10px 0 10px;
-  object-fit: cover;
+  //object-fit: cover;
+ }
+ 
+ //ドロップダウンアイコン
+ .navbar-brand_drop_down {
+  width: 40px;
+  height: 27px;
+  //border-radius: 30%;
+  //box-shadow: 0 2px 6px #c1ced7;
+  //margin: 10px 0 10px;
+  //object-fit: cover;
  }
  
  .btn-primary {
@@ -140,4 +170,5 @@
     color: #fff;
   }
 }
+
  

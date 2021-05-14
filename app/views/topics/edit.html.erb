@@ -1,11 +1,20 @@
+<div class="topic-index-wrapper">
 <div class="container" >
   <div class="row">
     <div class="mx-auto col-md-10 col-10 bg-white p-5" >
       <h1 class="text-center">編集</h1>
         <%= form_with(model: @topic, local: true) do |f| %>
+        
+          <%# 以下実装中 %>
+          <div class="form-group">
+            <%#= f.label :店名 %>
+            <%#= f.text_field :shop_name, class: 'form-control' %>
+          </div>
+         <%# 以上実装中 %>
+          
           <div class="form-group">
             <%= f.label :店名 %>
-            <%= f.text_field :shop_name, class: 'form-control' %>
+            <%= f.collection_select :shop_id, Shop.all, :id, :name, :prompt => "店名を選択", class: 'form-control' %>
           </div>
           <div class="form-group">
             <%= f.label :商談内容・受注状況等 %>
@@ -34,6 +43,7 @@
       </div>
     </div>
   </div>
+</div>  
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>

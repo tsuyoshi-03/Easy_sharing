@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :maps, only: [:index]
   
   get 'favorites/index'
-  post '/favorites', to: 'favorites#create'
+  post 'favorites/:topic_id/create' => "favorites#create"
   post 'favorites/:topic_id/destroy' => "favorites#destroy"
   
 end

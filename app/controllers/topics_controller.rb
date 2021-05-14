@@ -14,14 +14,7 @@ class TopicsController < ApplicationController
   end
   
   def create
-    shop = Shop.find_by(name: topic_params[:shop_name] )
-    @topic = current_user.topics.new
-    @topic.image1 = topic_params[:image1]
-    @topic.image2 = topic_params[:image2]
-    @topic.image3 = topic_params[:image3]
-    @topic.image4 = topic_params[:image4]
-    @topic.description = topic_params[:description]
-    @topic.shop_id = shop.id
+    @topic = current_user.topics.new(topic_params)
     if @topic.save
       redirect_to topics_path, success: '投稿に成功しました'
     else
@@ -34,21 +27,24 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     @comments = @topic.comments
     @comment = current_user.comments.new
-  end  
+  end
   
   def edit
     @topic = Topic.find(params[:id])
+    shop = Shop.find(@topic.shop_id)
+    @shop_name = shop.name
   end 
 
   def update
-     @topic = Topic.find(params[:id])
+    #binding.pry
+    @topic = Topic.find(params[:id])
     if @topic.update(topic_params)
       redirect_to topics_path, success: '投稿に成功しました'
     else
       flash.now[:danger] = "投稿に失敗しました"
       render :edit
     end
-  end  
+  end
   
   def destroy
     @topic = Topic.find(params[:id])
@@ -64,7 +60,7 @@ class TopicsController < ApplicationController
 
   private
   def topic_params
-    params.require(:topic).permit(:image1, :image2, :image3, :image4, :description, :shop_name)
+    params.require(:topic).permit(:image1, :image2, :image3, :image4, :description, :shop_id,)
   end
   
   def search_params

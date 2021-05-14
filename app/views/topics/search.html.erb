@@ -5,20 +5,14 @@
           <h1>投稿一覧</h1>
             <%= link_to("マイポスト", "/topics/mypost", {class: "btn btn-primary m-2"}) %>
             <%= link_to("ブックマーク", favorites_index_path, {class: "btn btn-secondary m-2"}) %>
-        </div>
-        
-       <div class="row"> 
-        <div class="col-md-12">
             <%= search_form_for(@q, url:search_path) do |f| %>
               <%= f.search_field :shop_name_cont ,placeholder: "書店名", :size => "30*30"  %>
               <%= f.submit "検索" %>
             <% end %>
         </div> 
-      </div>
-          
-      </div>
+      </div> 
     </div>
-  </div>
+  </div>  
   
   <div class="py-4 bg-light">
     <div class="container">
@@ -27,8 +21,8 @@
         <div class="col-md-4 p-3">
           <div class="card box-shadow">
             <img class="card-img-top">
-            <% if topic.image.url %>
-              <%= image_tag topic.image.url, class:'index_image' %>
+            <% if topic.image1.url %>
+              <%= image_tag topic.image1.url, class:'index_image' %>
             <% else %>
               <%= image_tag "/assets/default.png", class:'index_image' %>
             <% end %>

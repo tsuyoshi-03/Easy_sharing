@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Test1</title>
+    <title>Easy-sharing</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -18,45 +18,47 @@
 
   
   </head>
-
-  <body>
-  <% if logged_in? %> 
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <% if current_user.image.url %> 
-      <%= link_to image_tag(current_user.image.url, class:"navbar-brand"), edit_user_path(id: current_user.id) %>
-    <% else %>  
-      <%= link_to image_tag("/assets/default_user_image.png", class:"navbar-brand"), edit_user_path(id: current_user.id) %>
-    <% end %>  
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  
+<% if logged_in? %>
+<nav class="navbar navbar-expand-md navbar-light p-1 bg-white border , sticky-top" ,style=height:30px; >
+    <div class="container">
+      <a class="navbar-brand text-primary" href='/topics'>
+        <b>Easy sharing</b>
+      </a> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar4">
         <span class="navbar-toggler-icon"></span>
       </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <%= link_to '新規投稿', new_topic_path , class: "nav-link" %>
-            </li>
-            <li class="nav-item active">
-              <%= link_to '投稿一覧', '/topics', class: "nav-link" %>
-            </li>
-            <li class="nav-item active">
-              <%= link_to 'MAP', '/maps' , class: "nav-link" %>
-            </li>
-            <li class="nav-item active">
-              <%= link_to 'ユーザー管理', '/users', class: "nav-link" %>
-            </li>
-            <li class="nav-item active">
-              <%= link_to '書店登録', new_shop_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item active">
-              <%= link_to '書店管理', shops_path, class: "nav-link" %>
-            </li>
-          </ul> <a class="nav-item active active ml-auto">
-            <%= link_to logout_path, class: "btn btn-dark", method: :delete do %>ログアウト<% end %>
-                </a>
-        </div>
-    </nav>
-  
-<% end %>
+      <div class="collapse navbar-collapse" id="navbar4">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><%= link_to image_tag("/assets/topic_index.png", class:"navbar-brand"), '/topics' %></li>
+          <li class="nav-item"><%= link_to image_tag("/assets/mypost.png", class:"navbar-brand"), "/topics/mypost" %></li>
+          <li class="nav-item"><%= link_to image_tag("/assets/bookmark.png", class:"navbar-brand"), favorites_index_path %></li>
+          <li class="nav-item"><%= link_to image_tag("/assets/topic_new.png", class:"navbar-brand"), new_topic_path %></li>
+          <li class="nav-item"><%= link_to image_tag("/assets/map_index.png", class:"navbar-brand"), '/maps' %></li>
+          <li class="nav-item">
+            <% if current_user.image.url %> 
+              <%= link_to image_tag(current_user.image.url, class:"navbar-brand"), edit_user_path(id: current_user.id) %>
+            <% else %>  
+              <%= link_to image_tag("/assets/default_user_image.png", class:"navbar-brand"), edit_user_path(id: current_user.id) %>
+            <% end %>
+          </li>
+          <li class="nav-item"><%= link_to image_tag("/assets/users_index.png", class:"navbar-brand"), '/users' %></li>
+          
+          <li class="nav-item dropdown pr-2" >
+            <div class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= image_tag("/assets/shop_new.png", class:"navbar-brand_drop_down") %>
+            </div>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href='/shops/new'>店舗登録</a>
+              <a class="dropdown-item" href='/shops'>店舗管理</a>
+            </div>
+          </li>
+        
+          <li class="nav-item pl-3"><%= link_to logout_path, method: :delete do %><%= image_tag("/assets/logout.png", class:"navbar-brand") %><% end %></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <% end %>
 
  <%= yield %>
   </body>

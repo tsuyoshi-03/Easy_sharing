@@ -55,13 +55,15 @@
             
             <div class="topic-author">
              <% if Favorite.find_by(user_id: @current_user.id, topic_id: @topic.id) %>
-              <%= link_to("/favorites/#{@topic.id}/destroy", {method: "post"}) do %>
-                <span class="fa fa-heart like-btn"></span>
+              <%= link_to("/favorites/#{@topic.id}/destroy", {method: "post"}) do  %>
+              <%= image_tag 'bookmark.png', class: 'topic-index-icon' %>
               <% end %>
             <% else %>
-              <%= link_to favorites_path(topic_id: @topic.id), method: :post do %>
-              <%= image_tag 'heart-black.png', class: 'topic-index-icon' %><% end %>
-            <% end %>  
+              <%= link_to("/favorites/#{@topic.id}/create", {method: "post"}) do %>
+              <%= image_tag 'no_bookmark.png', class: 'topic-index-icon' %>
+              <% end %>
+            <% end %>
+            
             <%= link_to image_tag('comment.png', class: 'topic-index-icon'), new_comment_path(topic_id: @topic.id) %>
             
             <% if current_user == @topic.user %>
