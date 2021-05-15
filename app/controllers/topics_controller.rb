@@ -31,8 +31,6 @@ class TopicsController < ApplicationController
   
   def edit
     @topic = Topic.find(params[:id])
-    shop = Shop.find(@topic.shop_id)
-    @shop_name = shop.name
   end 
 
   def update

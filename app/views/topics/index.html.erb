@@ -3,13 +3,17 @@
       <div class="row">
         <div class="col-md-12">
           <h1 class="mb-2">Topics</h1>
-            <%= search_form_for(@q, url:search_path) do |f| %>
-              <%= f.search_field :shop_name_cont, placeholder: "書店名", :size => "30*30"  %>
-              <%= f.submit  %>
+        </div>
+        <form class="form-inline d-flex justify-content-center mx-auto" >
+        <div class="col-xs-4">
+            <%= search_form_for(@q, url:topic_search_path) do |f| %>
+              <%= f.search_field :shop_name_cont, class:"form-control" , placeholder: "店名", :size => "30*30"  %>
+        </div>      
+              <%= f.submit class:"btn btn-primary" %>
             <% end %>
-        </div> 
-      </div> 
-    </div>
+        </form>
+      </div>  
+    </div> 
   </div>
   
   <div class="py-4 bg-light">
@@ -54,9 +58,8 @@
     </div>
   </div>
   
-  <footer class="text-muted py-5">
-    <div class="container">
-      <%= link_to 'Back to top', '/topics', class: "float-right" %>
-      <p>Album template is based on Bootstrap © examples.&nbsp; <br>New to Bootstrap? <a href="#">Visit the homepage</a> or read our <a href="#">getting started guide</a>.</p>
-    </div>
-  </footer>
+<footer class="text-muted py-4 mb-2">
+  <div class="container">
+    <%= link_to 'Back to top', '/topics', class: "float-right" %>
+  </div>
+</footer>

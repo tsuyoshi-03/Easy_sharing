@@ -1,26 +1,32 @@
+<div class="shop-new-wrapper">
 <div class="container" >
-  <div class="mx-auto" style="width: 200px;">
-    <p>登録情報</p>
-  </div>
-    <%= form_for @shop do |f| %>
-      <div class="form-group">
-        <%= f.label :登録名, class: 'text-body' %>
-        <%= f.text_field :name, class: 'form-control' %>
-      </div>
-      <div class="form-group">
-        <%= f.label :郵便番号, class: 'text-body' %>
-        <%= f.text_field :postal_code, class: 'form-control' %>
-      </div>
-      <div class="form-group">
-        <%= f.label :住所, class: 'text-body' %>
-        <%= f.text_field :address, class: 'form-control' %>
-      </div>
-      <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="customCheck1">
-        <label class="custom-control-label" for="customCheck1">閉店</label>
-      </div>
-      <div class="mx-auto" style="width: 200px;">
-        <%= f.submit "登録", class: "btn btn-primary" %>
-      </div>
+  <div class="row">
+    <div class="mx-auto col-md-8 col-10 bg-white p-5" >
+      <h2 class="text-center">店舗情報編集</h2>
+        <%= form_for @shop do |f| %>
+        <div class="form-group">
+          <%= f.label :登録名, class: 'text-body' %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :郵便番号, class: 'text-body' %>
+          <%= f.text_field :postal_code, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :住所, class: 'text-body' %>
+          <%= f.text_field :address, class: 'form-control' %>
+        </div>
+        <div class="mx-auto" style="width: 150px;">
+          <%= f.submit "登録", class: 'btn-block btn-primary' %>
+        </div>
         <% end %>
     </div>
+  </div>
+</div> 
+</div>
+
+<footer class="text-muted py-4 mb-2">
+  <div class="container">
+    <%= link_to 'Back to top', '/topics', class: "float-right" %>
+  </div>
+</footer>

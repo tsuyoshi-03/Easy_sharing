@@ -1,38 +1,45 @@
-<div class="topic-index-wrapper">
+<div class="user-edit-wrapper">
 <div class="container" >
-  <div class="mx-auto" style="width: 200px;">
-    <p>登録情報</p>
+  <div class="row">
+    <div class="mx-auto col-md-6 col-10 bg-white p-5" >
+      <h3 class="text-center">プロフィールを編集</h3>
+        <%= form_for @user do |f| %>
+        <div class="form-group">
+          <%= f.label :name, class: 'text-body' %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :email, class: 'text-body' %>
+          <%= f.text_field :email, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password, class: 'text-body' %>
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password_confirmation, class: 'text-body' %>
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+        </div>
+        <% if @user.image.url %>
+          <%= image_tag @user.image.url, class:'icon_edit' %>
+        <% else %>
+          <%= image_tag "/assets/default_user_image.png", class:'icon_edit' %>
+        <% end %>
+        <div class="form-group">
+          <%= f.label :image %>
+          <%= f.file_field :image%>
+        </div>
+        <div class="mx-auto" style="width: 200px;">
+          <%= f.submit "登録", class: 'btn-block btn-primary' %>
+        </div>  
+        <% end %>
+    </div>
   </div>
-  <%= form_for @user do |f| %>
-    <div class="form-group">
-      <%= f.label :name, class: 'text-body' %>
-      <%= f.text_field :name, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= f.label :email, class: 'text-body' %>
-      <%= f.text_field :email, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= f.label :password, class: 'text-body' %>
-      <%= f.password_field :password, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= f.label :password_confirmation, class: 'text-body' %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-    </div>
-    <% if @user.image.url %>
-      <%= image_tag @user.image.url, class:'icon_edit' %>
-    <% else %>
-      <%= image_tag "/assets/default_user_image.png", class:'icon_edit' %>
-    <% end %>
-    
-    <div class="form-group">
-      <%= f.label :image %>
-      <%= f.file_field :image%>
-    </div>
-    <div class="mx-auto" style="width: 200px;">
-      <%= f.submit "登録", class: "btn btn-primary" %>
-    </div>  
-  <% end %>
+</div>
+</div>
+
+<footer class="text-muted py-4 mb-2">
+  <div class="container">
+    <%= link_to 'Back to top', '/topics', class: "float-right" %>
   </div>
-</div>  
+</footer>

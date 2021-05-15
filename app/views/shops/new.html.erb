@@ -1,8 +1,8 @@
-<div class="topic-index-wrapper">
+<div class="shop-new-wrapper">
 <div class="container" >
   <div class="row">
     <div class="mx-auto col-md-8 col-10 bg-white p-5" >
-      <h1 class="text-center">書店登録</h1>
+      <h2 class="text-center">店舗登録</h2>
         <%= form_for @shop do |f| %>
         <div class="form-group">
           <%= f.label :登録名, class: 'text-body' %>
@@ -24,4 +24,9 @@
   </div>
 </div> 
 </div>
-    
+
+<footer class="text-muted py-4 mb-2">
+  <div class="container">
+    <%= link_to 'Back to top', '/topics', class: "float-right" %>
+  </div>
+</footer>

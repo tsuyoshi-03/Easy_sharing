@@ -29,19 +29,19 @@
       </button>
       <div class="collapse navbar-collapse" id="navbar4">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><%= link_to image_tag("/assets/topic_index.png", class:"navbar-brand"), '/topics' %></li>
-          <li class="nav-item"><%= link_to image_tag("/assets/mypost.png", class:"navbar-brand"), "/topics/mypost" %></li>
-          <li class="nav-item"><%= link_to image_tag("/assets/bookmark.png", class:"navbar-brand"), favorites_index_path %></li>
-          <li class="nav-item"><%= link_to image_tag("/assets/topic_new.png", class:"navbar-brand"), new_topic_path %></li>
-          <li class="nav-item"><%= link_to image_tag("/assets/map_index.png", class:"navbar-brand"), '/maps' %></li>
-          <li class="nav-item">
+          <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="投稿一覧"><%= link_to image_tag("/assets/topic_index.png", class:"navbar-brand"), '/topics' %></li>
+          <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="マイポスト"><%= link_to image_tag("/assets/mypost.png", class:"navbar-brand"), "/topics/mypost" %></li>
+          <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="ブックマーク"><%= link_to image_tag("/assets/bookmark.png", class:"navbar-bookmark-brand"), favorites_index_path %></li>
+          <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="新規投稿"><%= link_to image_tag("/assets/topic_new.png", class:"navbar-brand"), new_topic_path %></li>
+          <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Mapから探す"><%= link_to image_tag("/assets/map_index.png", class:"navbar-brand"), '/maps' %></li>
+          <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="プロフィール">
             <% if current_user.image.url %> 
-              <%= link_to image_tag(current_user.image.url, class:"navbar-brand"), edit_user_path(id: current_user.id) %>
+              <%= link_to image_tag(current_user.image.url, class:"navbar-brand"), user_path(id: current_user.id) %>
             <% else %>  
-              <%= link_to image_tag("/assets/default_user_image.png", class:"navbar-brand"), edit_user_path(id: current_user.id) %>
+              <%= link_to image_tag("/assets/default_user_image.png", class:"navbar-brand"), user_path(id: current_user.id) %>
             <% end %>
           </li>
-          <li class="nav-item"><%= link_to image_tag("/assets/users_index.png", class:"navbar-brand"), '/users' %></li>
+          <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="ユーザー管理"><%= link_to image_tag("/assets/users_index.png", class:"navbar-brand"), '/users' %></li>
           
           <li class="nav-item dropdown pr-2" >
             <div class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,12 +53,22 @@
             </div>
           </li>
         
-          <li class="nav-item pl-3"><%= link_to logout_path, method: :delete do %><%= image_tag("/assets/logout.png", class:"navbar-brand") %><% end %></li>
+          <li class="nav-item pl-3" data-toggle="tooltip" data-placement="bottom" title="ログアウト">
+            <%= link_to logout_path, method: :delete, data: { confirm: "ログアウトします。よろしいですか？"} do %>
+              <%= image_tag("/assets/logout.png", class:"navbar-brand") %>
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
   <% end %>
+  
+<script>
+  $(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
 
  <%= yield %>
   </body>

@@ -1,7 +1,13 @@
 class ShopsController < ApplicationController
   def index
-    @shops = Shop.all
-  end  
+    @q = Shop.ransack(params[:q])
+    @shops = @q.result(distinct: true).order(created_at: :desc)
+  end
+  
+  def search
+    @q = Shop.search(search_params)
+    @shops = @q.result(distinct: true).order(created_at: :desc)
+  end
   
   def new
     @shop = Shop.new
@@ -18,6 +24,7 @@ class ShopsController < ApplicationController
   end
   
   def show
+    @shop = Shop.find(params[:id])
   end
   
   def edit
@@ -52,6 +59,10 @@ class ShopsController < ApplicationController
   private
   def shop_params
     params.require(:shop).permit(:name, :postal_code, :address)
+  end
+  
+  def search_params
+    params.require(:q).permit(:name_cont)
   end
   
   def autocomplete_params

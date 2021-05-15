@@ -1,5 +1,31 @@
-<%= @user.name %>
-<%= @user.email %>
+<div class="user-show-wrapper">
+  <div class="container" >
+    <div class="row">
+      <div class="mx-auto col-md-6 col-10 bg-white p-5" >
+        <h2 class="text-center">プロフィール</h2>
+          <div class="container" >
+            <div class="row">
+              <div class="mx-auto col-md-4">
+                <% if @user.image.url %>
+                  <%= image_tag @user.image.url, class:'icon_edit' %>
+                <% else %>
+                  <%= image_tag "/assets/default_user_image.png", class:'icon_edit' %>
+                <% end %>
+              </div>
+            </div>
+            <h3 class="text-center pt-2"><%= @user.name %></h3>
+            <h3 class="text-center p-1"><%= @user.email %></h3>
+            <div class="mx-auto" style="width: 200px;">
+              <%= link_to("プロフィールの編集", edit_user_path(id: current_user.id), {class: "btn btn-primary m-2"}) %>
+            </div>
+          </div>
+      </div>
+    </div>  
+  </div>
+</div>
 
-<%= link_to "編集", edit_user_path %>
-<%= link_to "削除", user_path,method: :delete %>
+<footer class="text-muted py-4 mb-2">
+  <div class="container">
+    <%= link_to 'Back to top', '/topics', class: "float-right" %>
+  </div>
+</footer>
