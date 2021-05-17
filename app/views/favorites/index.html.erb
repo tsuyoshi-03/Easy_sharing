@@ -7,7 +7,7 @@
         <form class="form-inline d-flex justify-content-center mx-auto" >
         <div class="col-xs-4">
             <%= search_form_for(@q, url:topic_search_path) do |f| %>
-              <%= f.search_field :shop_name_cont, class:"form-control" , placeholder: "書店名", :size => "30*30"  %>
+              <%= f.search_field :shop_name_cont, class:"form-control" , placeholder: "店名", :size => "30*30"  %>
         </div>      
               <%= f.submit class:"btn btn-primary" %>
             <% end %>

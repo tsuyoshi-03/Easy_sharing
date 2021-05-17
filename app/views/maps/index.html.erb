@@ -44,7 +44,7 @@ function initMap(){
           
           var infowindow = new google.maps.InfoWindow({
                 position: marker,
-                content: `<a href='search?utf8=✓&q%5Bshop_name_cont%5D=<%= shop.name %>&commit=検索'><%= shop.name %></a>`
+                content: `<a href='topics?utf8=✓&q%5Bshop_name_cont%5D=<%= shop.name %>&commit=検索'><%= shop.name %></a>`
               })
               
           marker.addListener('click', function() {
@@ -77,4 +77,4 @@ function codeAddress(){
 }
 
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGvTQFJNdjzCQqlq4-8kF45FoJGCf-9Dk&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['Maps_API_Key'] %>&callback=initMap" async defer></script>
