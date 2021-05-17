@@ -31,9 +31,9 @@
             <div class="card-body">
               <p class="font-weight-bold">
                 <% if topic.user.image.url %>
-                  <%= image_tag topic.user.image.url, class:'icon' %>
-                <% else %>
-                  <%= image_tag "/assets/default_user_image.png", class:'icon' %>
+                  <%= link_to image_tag(topic.user.image.url, class:'icon'), user_path(id: topic.user.id) %>
+                <% else %> 
+                  <%= link_to image_tag("/assets/default_user_image.png", class:'icon'), user_path(id: topic.user.id) %>
                 <% end %>
                 <%= topic.user.name %>
               </p>
@@ -48,7 +48,7 @@
                   <button type="button" class="btn btn-sm btn-outline-secondary">
                     <%= link_to "View", topic %>
                   </button>
-                </div><small class="text-muted">9 mins</small>
+                </div><small class="text-muted"><%= l topic.created_at %></small>
             </div>
             </div>
           </div>

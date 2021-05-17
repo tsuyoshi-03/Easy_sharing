@@ -8,9 +8,9 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new(comment_params)
     if @comment.save
-      redirect_to topics_path
+      redirect_back(fallback_location: root_path) #コメント送信後は、一つ前のページへリダイレクトさせる。
     else
-      render :new
+      redirect_back(fallback_location: root_path)
     end
   end
 
