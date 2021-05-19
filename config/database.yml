@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: easy_sharing_production
-  username: easy_sharing
-  password: <%= ENV['easy_sharing_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
