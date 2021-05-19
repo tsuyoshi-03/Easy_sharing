@@ -5,9 +5,9 @@
           <div class="topic-index-single">
             <h3 class="topic-author">
               <% if @topic.user.image.url %>
-                  <%= image_tag @topic.user.image.url, class:'icon_show' %>
+                  <%= link_to image_tag(@topic.user.image.url, class:'icon_show'), user_path(id: @topic.user.id) %>
                 <% else %>
-                  <%= image_tag "/assets/default_user_image.png", class:'icon_show' %>
+                  <%= link_to image_tag("/assets/default_user_image.png", class:'icon_show'), user_path(id: @topic.user.id) %>
                 <% end %>
               <%= @topic.user.name %>
             </h3>
@@ -54,7 +54,7 @@
               <small><%= l @topic.created_at %></small>
             </div>
             
-            <div class="topic-author mt-2 mb-2">
+            <div class="topic-author mt-2 mb-3">
              <% if Favorite.find_by(user_id: @current_user.id, topic_id: @topic.id) %>
               <%= link_to("/favorites/#{@topic.id}/destroy", {method: "post"}) do  %>
               <%= image_tag 'bookmark.png', class: 'topic-index-icon' %>
@@ -76,20 +76,25 @@
           <div class="comments-author">
             <% @comments.each do |c| %>
             <ul class="list-group">
-              <li class="list-group-item">
+              <li class="list-group-item pt-2 pb-1">
                 <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1">
                     <% if c.user.image.url %>
-                      <%= image_tag c.user.image.url, class:'icon_show_comments' %>
+                      <%= link_to image_tag(c.user.image.url, class:'icon_show_comments'), user_path(id: c.user.id) %>
                     <% else %>
-                      <%= image_tag "/assets/default_user_image.png", class:'icon_show_comments' %>
+                      <%= link_to image_tag("/assets/default_user_image.png", class:'icon_show_comments'), user_path(id: c.user.id)  %>
                     <% end %>
-                    <%= @comment.user.name %>
+                    <%= c.user.name %>
                   </h5>
                 </div>
                 <div class="d-flex w-100 justify-content-between">
                   <p class="mb-1"><%= c.comment_content %></p>
-                    <small><%= l c.created_at %></small>
+                    <small>
+                      <% if current_user.id == c.user.id %>
+                        <%= link_to image_tag('delete.png', class: 'topic-index-icon'), comment_path(comment_id: c.id),method: :delete %>
+                      <% end %>
+                      <%= l c.created_at %>
+                    </small>
                 </div>
               </li>
             </ul>

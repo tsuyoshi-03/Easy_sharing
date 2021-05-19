@@ -48,13 +48,22 @@
                   <button type="button" class="btn btn-sm btn-outline-secondary">
                     <%= link_to "View", topic %>
                   </button>
-                </div><small class="text-muted">9 mins</small>
+                </div><small class="text-muted"><%= l topic.created_at %></small>
             </div>
             </div>
           </div>
         </div>
      <% end %>
      </div>
+     
+     <div class="row">
+      <div class="col-md-2 mx-auto" >
+        <ul class="pagination">
+         <li class="page-item"><%= paginate @topics %></li>
+        </ul> 
+      </div>
+    </div>
+     
     </div>
   </div>
   

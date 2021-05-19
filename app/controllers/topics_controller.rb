@@ -1,12 +1,12 @@
 class TopicsController < ApplicationController
   def index
     @q = Topic.ransack(params[:q])
-    @topics = @q.result(distinct: true).order(created_at: :desc)
+    @topics = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(9)
   end
   
   def search
     @q = Topic.search(search_params)
-    @topics = @q.result(distinct: true).order(created_at: :desc)
+    @topics = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(9)
   end
   
   def new
@@ -53,7 +53,7 @@ class TopicsController < ApplicationController
 
   def mypost
     @q = current_user.topics.ransack(params[:q])
-    @topics = @q.result(distinct: true).order(created_at: :desc)
+    @topics = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(9)
   end
 
   private

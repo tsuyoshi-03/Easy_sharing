@@ -1,7 +1,7 @@
 class FavoritesController < ApplicationController
   def index
-    @q = Topic.ransack(params[:q])
-    @favorite_topics = current_user.favorite_topics
+    @q = current_user.favorite_topics.ransack(params[:q])
+    @favorite_topics = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(9)
   end
   
   def create

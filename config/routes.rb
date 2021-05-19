@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'topics/mypost'
   
   resources :users
+    get 'user_search', to: 'users#search'
   
   resources :topics
     get 'topic_search', to: 'topics#search'

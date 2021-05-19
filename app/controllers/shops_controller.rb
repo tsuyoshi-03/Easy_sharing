@@ -1,12 +1,12 @@
 class ShopsController < ApplicationController
   def index
     @q = Shop.ransack(params[:q])
-    @shops = @q.result(distinct: true).order(created_at: :desc)
+    @shops = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(15)
   end
   
   def search
     @q = Shop.search(search_params)
-    @shops = @q.result(distinct: true).order(created_at: :desc)
+    @shops = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(15)
   end
   
   def new

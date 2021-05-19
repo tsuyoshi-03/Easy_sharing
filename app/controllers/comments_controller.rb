@@ -13,6 +13,15 @@ class CommentsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
+  
+  def destroy
+    @comment = Comment.find(params[:comment_id])
+    if @comment.destroy
+      redirect_back(fallback_location: root_path)
+    else
+      redirect_back(fallback_location: root_path)
+    end
+  end
 
   private
   def comment_params
