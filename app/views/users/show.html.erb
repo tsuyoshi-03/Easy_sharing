@@ -16,7 +16,9 @@
             <h3 class="text-center pt-2"><%= @user.name %></h3>
             <h3 class="text-center p-1"><%= @user.email %></h3>
             <div class="mx-auto" style="width: 200px;">
-              <%= link_to("プロフィールの編集", edit_user_path(id: current_user.id), {class: "btn btn-primary m-2"}) %>
+              <% if current_user.id == @user.id %>
+                <%= link_to("プロフィールの編集", edit_user_path(id: @user.id), {class: "btn btn-primary m-2"}) %>
+              <% end %>  
             </div>
           </div>
       </div>

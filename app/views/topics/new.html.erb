@@ -6,10 +6,10 @@
         <%= form_with(model: @topic, local: true) do |f| %>
         
           <%# 以下実装中 %>
-          <div class="form-group">
+          <!--div class="form-group"-->
             <%#= f.label :店名 %>
             <%#= f.text_field :shop_name, class: 'form-control' %>
-          </div>
+          <!--/div-->
           <%# 以上実装中 %>
          
           <div class="form-group">
@@ -52,7 +52,7 @@
   </div>
 </footer>
 
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!--script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
   const dataList = function(request, response) {
     $.ajax({
@@ -75,4 +75,4 @@
       delay: 300, // 入力してからサジェストが動くまでの時間(ms)
       minLength: 2 // 2文字入力しないとサジェストが動かない
   });
-</script>
+</script-->
