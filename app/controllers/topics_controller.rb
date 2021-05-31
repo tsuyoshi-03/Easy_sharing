@@ -1,4 +1,7 @@
 class TopicsController < ApplicationController
+  before_action :authenticate_user
+  before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
+  
   def index
     @q = Topic.ransack(params[:q])
     @topics = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(9)
@@ -16,9 +19,9 @@ class TopicsController < ApplicationController
   def create
     @topic = current_user.topics.new(topic_params)
     if @topic.save
-      redirect_to topics_path, success: '投稿に成功しました'
+      redirect_to topics_path, success: '投稿しました'
     else
-      flash.now[:danger] = "投稿に失敗しました"
+      flash.now[:danger] = "投稿をやり直して下さい"
       render :new
     end
   end
@@ -37,9 +40,9 @@ class TopicsController < ApplicationController
     #binding.pry
     @topic = Topic.find(params[:id])
     if @topic.update(topic_params)
-      redirect_to topics_path, success: '投稿に成功しました'
+      redirect_to topics_path, success: '投稿を修正しました'
     else
-      flash.now[:danger] = "投稿に失敗しました"
+      flash.now[:danger] = "投稿をやり直して下さい"
       render :edit
     end
   end
@@ -54,6 +57,13 @@ class TopicsController < ApplicationController
   def mypost
     @q = current_user.topics.ransack(params[:q])
     @topics = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(9)
+  end
+  
+  def ensure_correct_user
+    @topic = Topic.find_by(id: params[:id])
+    if @topic.user_id != current_user.id
+      redirect_to topics_path, danger: '権限がありません'
+    end
   end
 
   private

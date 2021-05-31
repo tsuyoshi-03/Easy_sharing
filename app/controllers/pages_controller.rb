@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   #layout "no_nav"
   
   def index
-    render layout: "no_nav"
+    render layout: "nonav_pages_top"
   end
   
   def top

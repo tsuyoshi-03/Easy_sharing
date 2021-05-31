@@ -1,12 +1,13 @@
 class SessionsController < ApplicationController
   def new
+    render layout: "nonav_login"
   end
 
   def create
     user = User.find_by(email: params[:session][:email])
     if user && user.authenticate(params[:session][:password])
       log_in user
-      redirect_to topics_path, success: 'ログインに成功しました'
+      redirect_to topics_path, success: 'ログインしました'
     else
       flash.now[:danger] = 'ログインに失敗しました'
       render :new

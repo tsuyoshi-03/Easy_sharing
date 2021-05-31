@@ -67,12 +67,23 @@
   </nav>
   <% end %>
   
+  <% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>" role="alert">
+    <%= value %>
+  </div>
+  <% end %>
+  
 <script>
   $(function(){
   $('[data-toggle="tooltip"]').tooltip();
 });
+
+  $(function(){
+    $(".alert").fadeOut(2000);
+  });
 </script>
 
  <%= yield %>
+ 
   </body>
 </html>

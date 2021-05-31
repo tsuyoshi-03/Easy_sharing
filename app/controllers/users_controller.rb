@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user, {only: [:index, :show, :edit, :update, :destroy]}
+  before_action :ensure_correct_user, {only: [:edit, :update]}
   
   def index
     @q = User.ransack(params[:q])
@@ -41,6 +43,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.destroy
       redirect_to users_path
+    end
+  end
+  
+  def ensure_correct_user
+    if current_user.id != params[:id].to_i
+      redirect_to users_path, danger: '権限がありません'
     end
   end
   
